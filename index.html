@@ -1,0 +1,1220 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- This meta tag guarantees responsive scaling across all mobile, tablet, and desktop devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Práctica - Estudios Sociales (Bachillerato por Madurez)</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- FontAwesome for social media icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .quiz-container {
+        max-width: 800px;
+        margin: 30px auto;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      .option-btn {
+        text-align: left;
+        margin-bottom: 10px;
+        width: 100%;
+        white-space: normal; /* Ensures long text wraps on smaller screens */
+      }
+      .ad-container {
+        max-width: 800px;
+        margin: 20px auto;
+        text-align: center;
+      }
+      /* Ensures the rotating ad scales properly without overflowing */
+      .ad-container img {
+        max-width: 100%;
+        height: auto;
+        max-height: 150px;
+        object-fit: contain;
+      }
+      footer {
+        margin-top: 50px;
+        background-color: #343a40;
+        color: white;
+        text-align: center;
+        padding: 30px 15px;
+      }
+      footer a {
+        color: #17a2b8;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      footer a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+      .social-icons {
+        margin: 15px 0;
+      }
+      .social-icons a {
+        color: #ffffff;
+        margin: 0 10px;
+        font-size: 1.8rem;
+        text-decoration: none;
+      }
+      .social-icons a:hover {
+        color: #17a2b8;
+      }
+      .footer-links p {
+        margin-bottom: 5px;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Rotating Ads Section -->
+      <div class="ad-container">
+        <!-- img-fluid ensures it is responsive -->
+        <img
+          id="adImage"
+          src="clases_manejo.jpg"
+          alt="Ad 1"
+          class="img-fluid rounded shadow-sm"
+        />
+      </div>
+
+      <div class="quiz-container">
+        <h2 class="text-center mb-4">Práctica de Estudios Sociales</h2>
+        <h5 class="text-center text-muted mb-4">
+          Bachillerato por Madurez Suficiente
+        </h5>
+
+        <div id="start-screen" class="text-center">
+          <p class="lead">
+            Esta práctica consta de 40 preguntas basadas en la tabla de
+            especificaciones del programa. Pon a prueba tus conocimientos.
+          </p>
+          <button
+            id="start-btn"
+            class="btn btn-primary btn-lg w-100 w-md-auto mt-3"
+          >
+            Comenzar Práctica
+          </button>
+        </div>
+
+        <div id="quiz-screen" class="d-none">
+          <div
+            class="d-flex flex-column flex-sm-row justify-content-between align-items-center mb-3 gap-2"
+          >
+            <span id="question-counter" class="fw-bold">Pregunta 1 de 40</span>
+            <span id="score-counter" class="badge bg-success fs-6"
+              >Puntos: 0</span
+            >
+          </div>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 id="question-text" class="card-title"></h5>
+            </div>
+          </div>
+          <div id="options-container" class="d-grid gap-2"></div>
+          <div id="feedback-container" class="mt-3"></div>
+          <button id="next-btn" class="btn btn-dark mt-3 w-100 d-none">
+            Siguiente Pregunta
+          </button>
+        </div>
+
+        <div id="result-screen" class="d-none text-center">
+          <h3>¡Práctica Finalizada!</h3>
+          <p class="lead mt-3">Tu calificación final es:</p>
+          <h1 id="final-score" class="display-4 fw-bold text-primary mb-4"></h1>
+          <button
+            id="restart-btn"
+            class="btn btn-primary btn-lg w-100 w-md-auto"
+          >
+            Intentar de Nuevo
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Josbrevar's 07 Special's Footer -->
+    <footer>
+      <div class="container">
+        <h5 class="mb-3">
+          Designed by: Josbrevar07. © 2026. All Rights Reserved
+        </h5>
+
+        <div class="social-icons">
+          <a href="https://walink.co/341b8e" target="_blank" title="WhatsApp"
+            ><i class="fab fa-whatsapp"></i
+          ></a>
+          <a
+            href="https://www.instagram.com/josbrevar07/"
+            target="_blank"
+            title="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a
+            href="https://www.youtube.com/@josbrevar0773"
+            target="_blank"
+            title="YouTube"
+            ><i class="fab fa-youtube"></i
+          ></a>
+          <a
+            href="https://www.facebook.com/josue.brenesvargas"
+            target="_blank"
+            title="Facebook"
+            ><i class="fab fa-facebook"></i
+          ></a>
+        </div>
+
+        <div class="footer-links mt-4">
+          <p>
+            <strong
+              >Ejercicio en línea creado y diseñado en Santiago de Puriscal, San
+              José, Costa Rica.</strong
+            >
+          </p>
+          <p>©2026. All rights reserved.</p>
+          <p>
+            <a
+              href="https://clases-de-manejo-personalizadas.com/"
+              target="_blank"
+              >Clases de manejo personalizadas, página web.</a
+            >
+          </p>
+          <p>
+            <a
+              href="https://josbrevar07.github.io/servicio_de_impresiones/"
+              target="_blank"
+              >Servicio de impresiones y copias, página web</a
+            >
+          </p>
+          <p>
+            <a
+              href="https://josbrevar07.github.io/learning_any_language/"
+              target="_blank"
+              >Learning Any Language, página web</a
+            >
+          </p>
+          <p>
+            <a href="https://www.ivettenutricionista.com/" target="_blank"
+              >Consultorio de nutrición, página web</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // --- Ad Rotation Logic ---
+      const adImages = [
+        "clases_manejo.jpg",
+        "Espanol.jpg",
+        "impresiones.jpg",
+        "LAL-2.jpg",
+        "curriculo.jpg",
+        "Aprende.jpg",
+        "recuperamos.jpg",
+        "seguridad_vial.jpg",
+        "ejercicios_interactivos.png",
+        "necesita_pagina_web.png",
+        "clases-de-manejo-personalizadas.jpg",
+      ];
+
+      let adIndex = 0;
+
+      function rotateAds() {
+        adIndex = (adIndex + 1) % adImages.length;
+        const adImg = document.getElementById("adImage");
+        if (adImg) {
+          adImg.src = adImages[adIndex];
+          adImg.alt = `Ad ${adIndex + 1}`;
+        }
+      }
+
+      setInterval(rotateAds, 5000);
+
+      // --- Quiz Logic ---
+      const questionBank = [
+        {
+          question:
+            "¿Cuál es el propósito principal de la tabla de especificaciones del programa de Bachillerato por Madurez Suficiente?",
+          options: [
+            "Orientar la elaboración de las pruebas nacionales estandarizadas.",
+            "Establecer los salarios de los docentes de secundaria.",
+            "Definir el calendario de vacaciones escolares.",
+            "Regular la asistencia obligatoria a lecciones presenciales.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿A partir de qué convocatoria rige oficialmente la tabla de especificaciones analizada?",
+          options: [
+            "Convocatoria 01-2025",
+            "Convocatoria 02-2026",
+            "Convocatoria 01-2027",
+            "Convocatoria 03-2024",
+          ],
+          answer: 1,
+        },
+        {
+          question:
+            "¿Cuántos ítems en total componen la prueba nacional de Estudios Sociales según el documento?",
+          options: ["50 ítems", "40 ítems", "60 ítems", "70 ítems"],
+          answer: 2,
+        },
+        {
+          question:
+            "¿Qué temática general aborda principalmente el Bloque Temático 1 de la prueba?",
+          options: [
+            "La historia precolombina de Costa Rica.",
+            "Los procesos históricos, geopolíticos y poblacionales a escala global desde el siglo XIX hasta la actualidad.",
+            "Las reformas educativas del siglo XXI en Centroamérica.",
+            "El desarrollo industrial de la época colonial en América Latina.",
+          ],
+          answer: 1,
+        },
+        {
+          question:
+            "¿Qué aspecto abarca fundamentalmente el Bloque Temático 2?",
+          options: [
+            "La interdependencia global y los procesos históricos que definen a la Costa Rica actual.",
+            "La exploración espacial y satelital del siglo XX.",
+            "Las guerras civiles europeas de la Edad Media.",
+            "El intercambio comercial entre Asia y Oceanía antes del siglo XIX.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "Dentro de los verbos evaluativos definidos técnicamente en la tabla, ¿cuál de los siguientes se incluye?",
+          options: ["Memorizar", "Improvisar", "Analizar", "Dibujar"],
+          answer: 2,
+        },
+        {
+          question:
+            "Uno de los contenidos que forman parte del Bloque Temático 1 corresponde a:",
+          options: [
+            "La crisis económica mundial de 1929 y sus repercusiones.",
+            "La fundación de las primeras cofradías coloniales en Cartago.",
+            "La implementación de las Leyes Nuevas de 1542.",
+            "El proceso de abolición del ejército en Costa Rica en 1948.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Cuál de los siguientes procesos históricos globales se estudia en el Bloque Temático 1?",
+          options: [
+            "La Revolución rusa y los totalitarismos.",
+            "La creación de las repúblicas federales centroamericanas.",
+            "La campaña nacional de 1856-1857.",
+            "La crisis de la deuda externa costarricense de 1980.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "En relación con las dinámicas demográficas, el Bloque Temático 1 contempla el análisis de:",
+          options: [
+            "Las migraciones, fecundidad y problemáticas sociales entre países desarrollados y en vías de desarrollo.",
+            "El impacto del feudalismo en la demografía rural europea.",
+            "La tasa de natalidad durante la peste negra.",
+            "El censo indígena del siglo XVII en Costa Rica.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "Un contenido histórico nacional clave evaluado en el Bloque Temático 2 es:",
+          options: [
+            "La crisis de la economía agroexportadora y las luchas sociales en Costa Rica.",
+            "La caída del Imperio Romano de Oriente.",
+            "La unificación alemana dirigida por Bismarck.",
+            "La independencia de las trece colonias de Norteamérica.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Cuál de los siguientes acontecimientos nacionales del siglo XX se analiza en el Bloque Temático 2?",
+          options: [
+            "La Reforma Social de la década de 1940 y la Guerra Civil de 1948.",
+            "La firma del Pacto de Concordia en 1821.",
+            "La introducción del café en el Valle Central a finales del siglo XVIII.",
+            "La fundación de la Universidad de Santo Tomás.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué proceso económico internacional contemporáneo se examina en el Bloque Temático 2?",
+          options: [
+            "La globalización y el papel de las empresas transnacionales.",
+            "El mercantilismo estricto de los siglos XVI y XVII.",
+            "El surgimiento de los gremios artesanales medievales.",
+            "El trueque en las sociedades agrícolas prehispánicas.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "Dentro de los conflictos y tensiones geopolíticas globales del siglo XX estudiados en el programa se encuentra:",
+          options: [
+            "La Guerra Fría y los procesos de descolonización en Asia y África.",
+            "Las Guerras Médicas en la antigua Grecia.",
+            "Las guerras púnicas entre Roma y Cartago.",
+            "La conquista de los imperios azteca e inca.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué transformación política y socioeconómica en Costa Rica se ubica entre 1950 y 1980?",
+          options: [
+            "La consolidación de instituciones del Estado empresario y la diversificación agrícola.",
+            "La instauración del régimen colonial de encomiendas.",
+            "La consolidación del modelo agroexportador cafetalero monopólico.",
+            "La crisis total del sistema democrático y el cierre de la Asamblea Legislativa.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Cuál fue una de las consecuencias de la crisis económica de la década de 1980 en Costa Rica?",
+          options: [
+            "La implementación de programas de ajuste estructural (PAE).",
+            "La anexión del Partido de Nicoya.",
+            "La promulgación de la Constitución Política de 1949.",
+            "La creación de la Caja Costarricense de Seguro Social.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "Además de Analizar y Comprender, ¿cuál es otro de los verbos evaluativos formales incluidos en la tabla?",
+          options: ["Inventar", "Relacionar", "Dibujar", "Ignorar"],
+          answer: 1,
+        },
+        {
+          question:
+            "¿Qué aspecto demográfico y social se estudia al comparar países desarrollados y en vías de desarrollo?",
+          options: [
+            "Las diferencias en tasas de crecimiento poblacional y condiciones de bienestar.",
+            "La unificación de los sistemas monetarios mundiales.",
+            "La erradicación total de los movimientos migratorios.",
+            "La obligatoriedad de un idioma único global.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué temática sobre derechos humanos se incorpora en el análisis geopolítico actual?",
+          options: [
+            "La violación de derechos humanos en contextos de conflictos contemporáneos.",
+            "Los derechos de los gremios de artesanos en la Edad Media.",
+            "Las normas de caballería del siglo XII.",
+            "Los tributos obligatorios del imperio romano.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué rol juega la libertad de expresión según los contenidos evaluados en la realidad democrática?",
+          options: [
+            "Es fundamental para el fortalecimiento y ejercicio de la democracia.",
+            "Es un mecanismo de control militar de fronteras.",
+            "Es una normativa exclusiva para la regulación comercial.",
+            "Es un requisito para la exportación de productos agrícolas.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué significó el fin del bipartidismo en la historia política reciente de Costa Rica, según el bloque correspondiente?",
+          options: [
+            "Una transformación en la correlación de fuerzas políticas y el sistema electoral.",
+            "La supresión definitiva de las elecciones presidenciales.",
+            "El retorno al sistema de gobierno monárquico.",
+            "La eliminación de los partidos políticos nacionales.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Bajo qué directriz oficial se fundamentan los contenidos y objetivos de la tabla de especificaciones?",
+          options: [
+            "Los planes de estudio aprobados por el Consejo Superior de Educación.",
+            "Los estatutos de organizaciones internacionales de comercio.",
+            "Las directrices de ministerios de economía extranjeros.",
+            "Los acuerdos de corporaciones tecnológicas privadas.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Cuál verbo evaluativo de la tabla implica descomponer un todo en sus partes constitutivas para su estudio?",
+          options: ["Analizar", "Ubicar", "Reconocer", "Identificar"],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué busca el verbo 'Inferir' dentro de las exigencias cognitivas de la prueba?",
+          options: [
+            "Deducir consecuencias o conclusiones lógicas a partir de información dada.",
+            "Memorizar textualmente fechas y nombres de personajes.",
+            "Copiar fragmentos literales de un texto histórico.",
+            "Localizar puntos geográficos en un mapa en blanco.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "En el contexto de la expansión imperialista del siglo XIX, ¿qué potencias destacaron en el reparto de África y Asia?",
+          options: [
+            "Potencias europeas industrializadas como Gran Bretaña y Francia.",
+            "Naciones centroamericanas del período federal.",
+            "Imperios suramericanos del periodo precolombino.",
+            "Pequeños principados de Europa Oriental.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué significó el estallido de la Primera Guerra Mundial para el orden geopolítico mundial?",
+          options: [
+            "El colapso de grandes imperios tradicionales y la modificación de fronteras en Europa.",
+            "La unificación pacífica de todos los estados del continente americano.",
+            "La consolidación del feudalismo como sistema económico global.",
+            "La desaparición del comercio marítimo internacional.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Cuál fue una consecuencia político-ideológica directa de la Revolución rusa de 1917?",
+          options: [
+            "El establecimiento del primer Estado socialista de la historia (la URSS).",
+            "La restauración absoluta del zarismo en Europa Oriental.",
+            "La creación de la Comunidad Económica Europea.",
+            "La colonización de Norteamérica por parte del imperio ruso.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Cómo afectó la crisis de 1929 a la economía de América Latina y Costa Rica?",
+          options: [
+            "Provocó el desplome de las exportaciones agrícolas y una severa contracción económica.",
+            "Generó un crecimiento industrial inmediato e independencia financiera total.",
+            "Impulsó la moneda única latinoamericana de manera exitosa.",
+            "Eliminó por completo la dependencia del mercado internacional.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué caracterizó fundamentalmente el período conocido como la Guerra Fría?",
+          options: [
+            "La tensión bipolar y la confrontación ideológica entre Estados Unidos y la Unión Soviética.",
+            "Una etapa de paz mundial absoluta sin conflictos bélicos regionales.",
+            "El dominio comercial exclusivo de los países del continente africano.",
+            "La alianza militar unificada entre todas las potencias del planeta.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué implicó el proceso de descolonización en Asia y África durante la segunda mitad del siglo XX?",
+          options: [
+            "La independencia política de numerosas naciones respecto a las metrópolis europeas.",
+            "La anexión voluntaria de dichos continentes al territorio de Norteamérica.",
+            "El fortalecimiento del dominio colonial británico y francés.",
+            "La transformación de África en una potencia económica industrial.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué papel desempeñan las empresas transnacionales en el fenómeno de la globalización?",
+          options: [
+            "Articulan la producción, inversión y distribución comercial a escala planetaria.",
+            "Controlan exclusivamente los mercados locales de un solo municipio.",
+            "Prohíben el intercambio tecnológico entre diferentes naciones.",
+            "Sustituyen por completo las leyes de todos los países soberanos.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué relación existió entre el modelo agroexportador costarricense y el mercado internacional a finales del siglo XIX y principios del XX?",
+          options: [
+            "Una fuerte dependencia de la exportación de café y banano hacia mercados europeos y norteamericanos.",
+            "Un aislamiento comercial total que impedía la salida de productos.",
+            "Un intercambio exclusivamente interno con las comunidades indígenas.",
+            "Una producción centrada únicamente en la industria tecnológica avanzada.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué trascendencia histórica tuvieron las reformas político-electorales de mediados del siglo XX en Costa Rica?",
+          options: [
+            "Sentaron las bases para la transparencia electoral con la creación del Tribunal Supremo de Elecciones (TSE).",
+            "Establecieron el sufragio censitario exclusivo para terratenientes.",
+            "Eliminaron la participación de los ciudadanos en los comicios municipales.",
+            "Dieron origen al sistema de monarquía constitucional hereditaria.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué reformas sociales emblemáticas se consolidaron en Costa Rica durante la década de 1940?",
+          options: [
+            "La creación de la CCSS, el Código de Trabajo y las Garantías Sociales.",
+            "La privatización de la salud y la eliminación de la educación primaria.",
+            "La abolición definitiva de los impuestos municipales y aduaneros.",
+            "La disolución de los sindicatos de trabajadores agrícolas.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Cuál fue uno de los acontecimientos políticos desencadenantes de la Guerra Civil de 1948 en Costa Rica?",
+          options: [
+            "La anulación de las elecciones presidenciales de ese año y la polarización política.",
+            "La invasión de potencias extranjeras por las costas del Caribe.",
+            "La firma de un tratado de paz perpetua con los países vecinos.",
+            "La decisión de unificar el territorio nacional con Panamá.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué caracterizó el modelo de sustitución de importaciones impulsado en Costa Rica a partir de 1950?",
+          options: [
+            "El estímulo a la industria nacional para producir bienes que antes se compraban en el exterior.",
+            "La prohibición absoluta de importar alimentos de Centroamérica.",
+            "La dependencia exclusiva de la exportación manual de artesanías.",
+            "La estatización total de la propiedad privada y la tierra.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué objetivos buscaban los Programas de Ajuste Estructural (PAE) implementados en Costa Rica a partir de los años 80?",
+          options: [
+            "Transformar la economía hacia la diversificación de exportaciones, apertura comercial y reducción del Estado.",
+            "Ampliar el tamaño del sector público y estatizar la banca comercial privada.",
+            "Cerrar las fronteras comerciales para evitar cualquier tipo de inversión extranjera.",
+            "Establecer un control absoluto de precios en todos los productos de consumo.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué define el concepto de 'interdependencia global' en el mundo contemporáneo?",
+          options: [
+            "La creciente conexión y recíproca dependencia económica, política y cultural entre los países.",
+            "El aislamiento económico de las naciones para evitar crisis externas.",
+            "La subordinación absoluta de todos los continentes a un solo gobierno central.",
+            "La desaparición de las fronteras nacionales en todo el planeta.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué implica el verbo evaluativo 'Reconocer' según el enfoque de la prueba?",
+          options: [
+            "Identificar características, conceptos o hechos previamente estudiados.",
+            "Inventar teorías científicas originales sin sustento documental.",
+            "Diseñar mapas geográficos a escala real de manera empírica.",
+            "Criticar de forma destructiva los textos oficiales de estudio.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Por qué se consideran relevantes los derechos humanos en el estudio de las sociedades actuales?",
+          options: [
+            "Porque garantizan la dignidad de las personas y norman la convivencia democrática frente a abusos de poder.",
+            "Porque sirven exclusivamente para regular los contratos comerciales privados.",
+            "Porque son normativas temporales que aplican únicamente en tiempos de guerra.",
+            "Porque sustituyen por completo las leyes penales de cada país.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Cuál es la utilidad fundamental de repasar los contenidos mediante esta tabla de especificaciones?",
+          options: [
+            "Prepararse adecuadamente bajo los criterios técnicos y temáticos oficiales de la prueba de Bachillerato por Madurez.",
+            "Memorizar datos al azar sin relación con los programas de estudio del Ministerio.",
+            "Obtener un certificado de participación en eventos deportivos internacionales.",
+            "Validar requisitos académicos para estudios de posgrado universitario.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "Durante el siglo XIX, ¿cuál fue una de las principales motivaciones para la expansión de los imperios europeos en África y Asia?",
+          options: [
+            "La búsqueda de materias primas y nuevos mercados para sus productos industriales.",
+            "El deseo de establecer democracias representativas en los territorios conquistados.",
+            "La necesidad de encontrar alianzas militares contra el Imperio Romano.",
+            "El objetivo de adoptar las religiones locales de los pueblos colonizados.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "En el contexto de la Guerra Fría, ¿qué representó el surgimiento de procesos de descolonización en Asia y África?",
+          options: [
+            "El fin del control político directo de las potencias europeas sobre numerosos territorios.",
+            "La anexión inmediata de estos continentes por parte de Estados Unidos y la Unión Soviética.",
+            "El inicio de una nueva era de imperialismo liderada exclusivamente por naciones de América Latina.",
+            "La unificación pacífica de todas las antiguas colonias bajo un solo gobierno mundial.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Cuál es una característica de las dinámicas poblacionales actuales al contrastar países desarrollados y en vías de desarrollo?",
+          options: [
+            "Altas tasas de emigración desde países en vías de desarrollo hacia países desarrollados en busca de mejores condiciones socioeconómicas.",
+            "Una drástica reducción en la tasa de natalidad en los países en vías de desarrollo que supera a la de Europa.",
+            "El cierre total y efectivo de todas las fronteras globales para evitar el ingreso de migrantes.",
+            "La erradicación completa de las problemáticas sociales en las grandes zonas urbanas del mundo.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué papel histórico jugó la Reforma Social de la década de 1940 en el desarrollo institucional de Costa Rica?",
+          options: [
+            "Estableció instituciones clave como la CCSS y promulgó las Garantías Sociales, mejorando el bienestar de la población.",
+            "Inició el modelo de economía agroexportadora basado exclusivamente en el monopolio del café.",
+            "Provocó la inmediata disolución del ejército nacional antes del inicio de la Guerra Civil.",
+            "Privatizó los servicios de salud y educación primaria para favorecer el libre mercado.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "Durante las transformaciones socioeconómicas entre 1950 y 1980 en Costa Rica, ¿qué modelo de desarrollo económico impulsó el Estado?",
+          options: [
+            "El modelo de industrialización por sustitución de importaciones (ISI) liderado por un Estado Gestor.",
+            "El modelo mercantilista estricto basado en la extracción y exportación de metales preciosos.",
+            "Un modelo económico comunista con control absoluto del Estado sobre la propiedad privada agrícola.",
+            "El desmantelamiento total de las instituciones públicas en favor del sector financiero internacional.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Cuál fue una de las causas estructurales de la severa crisis de la década de 1980 en Costa Rica?",
+          options: [
+            "El agotamiento del modelo de sustitución de importaciones y el insostenible endeudamiento externo.",
+            "La invasión militar directa de potencias extranjeras al territorio nacional costarricense.",
+            "El descubrimiento de grandes reservas de petróleo que desestabilizaron la moneda local.",
+            "La abolición del colón como moneda nacional y la adopción forzada del dólar estadounidense.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "En la Costa Rica actual, ¿cómo se manifiesta la interdependencia global evaluada en el Bloque Temático 2?",
+          options: [
+            "A través de la inserción en flujos comerciales internacionales y la atracción de empresas transnacionales.",
+            "Mediante el cierre absoluto de las aduanas y la prohibición de importar bienes y servicios tecnológicos.",
+            "Con la nacionalización y expropiación de todas las empresas multinacionales que operan en el país.",
+            "A través de la adopción de un modelo económico autárquico que rechaza las relaciones diplomáticas externas.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué factor evidenció claramente la crisis del bipartidismo en la política de Costa Rica a finales del siglo XX e inicios del XXI?",
+          options: [
+            "La ruptura del dominio exclusivo de dos partidos tradicionales y el surgimiento de nuevas fuerzas políticas.",
+            "La consolidación legal de un sistema de partido único apoyado obligatoriamente por toda la población.",
+            "La eliminación de la Asamblea Legislativa por decreto del Tribunal Supremo de Elecciones.",
+            "El regreso de los caudillos políticos militares del siglo XIX para gobernar sin oposición alguna.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "Si un ítem de la prueba solicita al estudiante 'Relacionar' eventos históricos, ¿qué habilidad cognitiva se está evaluando según la tabla?",
+          options: [
+            "Establecer conexiones, vínculos y dependencias entre diferentes procesos, causas y consecuencias.",
+            "Repetir textualmente las fechas y nombres de un libro de texto sin analizarlos.",
+            "Identificar visualmente un símbolo patrio aislado sin conocer su contexto histórico.",
+            "Ignorar las causas de un evento para enfocarse únicamente en el año exacto en que ocurrió.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "Al analizar conflictos y tensiones geopolíticas contemporáneas, ¿qué aspecto sobre derechos humanos prioriza el programa?",
+          options: [
+            "El análisis de las constantes violaciones a los derechos fundamentales de las poblaciones civiles vulnerables.",
+            "La justificación legal de la discriminación racial en el contexto de las guerras modernas.",
+            "El rechazo absoluto a la Declaración Universal de los Derechos Humanos por considerarla obsoleta.",
+            "La imposición de dictaduras autoritarias como la única vía aceptada para mantener la paz mundial.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Cuál fue el objetivo fundamental de la creación del Instituto Costarricense de Electricidad (ICE) durante la etapa del Estado Gestor en Costa Rica?",
+          options: [
+            "Promover el desarrollo nacional a través de la electrificación y la modernización de las telecomunicaciones.",
+            "Privatizar los recursos hídricos del país para atraer inversión de empresas extranjeras.",
+            "Centralizar la exportación de productos agrícolas bajo una única institución estatal.",
+            "Sustituir al Tribunal Supremo de Elecciones en la supervisión de la infraestructura pública.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué característica fundamental define a la globalización económica en la actualidad?",
+          options: [
+            "La integración de los mercados locales a una extensa red económica y financiera mundial.",
+            "El aislamiento comercial voluntario de las naciones para proteger su industria artesanal.",
+            "La prohibición absoluta del uso de tecnologías de la información en transacciones internacionales.",
+            "La abolición del dinero físico y su sustitución exclusiva por el trueque entre países.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "En el marco de la Guerra Fría, ¿qué papel histórico jugaron conflictos satélites como la Guerra de Corea o la Guerra de Vietnam?",
+          options: [
+            "Sirvieron como escenarios de enfrentamiento militar indirecto entre Estados Unidos y la Unión Soviética.",
+            "Fueron intentos exitosos de las Naciones Unidas para unificar el continente asiático de manera pacífica.",
+            "Representaron la lucha exclusiva de los pueblos asiáticos contra el imperialismo del Imperio Británico.",
+            "Concluyeron con la erradicación total de las armas nucleares en el mundo occidental.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "Durante la crisis del modelo agroexportador en la primera mitad del siglo XX, ¿qué debilidad estructural evidenció la economía costarricense?",
+          options: [
+            "La extrema vulnerabilidad económica ante las fluctuaciones de precios internacionales del café y el banano.",
+            "El exceso de industrialización pesada que no encontró mercado en los países vecinos.",
+            "La falta absoluta de tierras cultivables en el Valle Central y la zona atlántica.",
+            "La total autosuficiencia alimentaria que impedía generar ingresos por exportaciones.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "A partir de la crisis de la década de 1980 en Costa Rica, ¿qué medida económica clave fue promovida por los Programas de Ajuste Estructural (PAE)?",
+          options: [
+            "La promoción de exportaciones no tradicionales y la atracción de Inversión Extranjera Directa (IED).",
+            "La estatización de todos los bancos privados y la expropiación de tierras agrícolas.",
+            "El cierre definitivo de las aduanas para proteger a los productores locales de la competencia externa.",
+            "La eliminación total de los impuestos al consumo interno y a las importaciones de lujo.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿De qué manera influyó el contexto de la Guerra Fría en los conflictos sociales y armados de América Latina?",
+          options: [
+            "Fomentó la polarización ideológica, donde las superpotencias apoyaron dictaduras militares o movimientos insurgentes según sus intereses.",
+            "Provocó la desmilitarización absoluta de la región al firmarse tratados de neutralidad perpetua.",
+            "Permitió que todos los países latinoamericanos alcanzaran el mismo nivel de desarrollo económico que Europa occidental.",
+            "Unificó a toda la región bajo un solo bloque político-económico independiente de Washington y Moscú.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "Al analizar los flujos migratorios actuales desde los países en vías de desarrollo, ¿qué factor se considera principalmente como una causa 'de expulsión'?",
+          options: [
+            "La pobreza estructural, la falta de oportunidades laborales y la inseguridad ciudadana.",
+            "El exceso de oferta de empleos altamente remunerados en el país de origen del migrante.",
+            "Los estrictos programas de bienestar social que obligan a los ciudadanos a salir a estudiar al extranjero.",
+            "La estabilidad política y económica absoluta que incentiva los viajes de turismo global.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "Según el ordenamiento jurídico originado en la Constitución Política de 1949 en Costa Rica, ¿qué institución es responsable de garantizar la pureza del sufragio?",
+          options: [
+            "El Tribunal Supremo de Elecciones (TSE), el cual adquirió independencia como máximo órgano en materia electoral.",
+            "El Ministerio de la Presidencia, a través de sus delegados provinciales y cantonales.",
+            "La Fuerza Pública, encargada de contar los votos de manera oficial y secreta.",
+            "El Patronato Nacional de la Infancia (PANI) mediante la supervisión del voto escolar.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué indicador socioeconómico es utilizado internacionalmente para medir el progreso de las naciones, tomando en cuenta la esperanza de vida, la educación y el ingreso per cápita?",
+          options: [
+            "El Índice de Desarrollo Humano (IDH).",
+            "El Producto Interno Bruto Nominal Exclusivo (PIBNE).",
+            "La Tasa de Crecimiento Demográfico Vegetativo.",
+            "El Índice de Inflación Interanual Global.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "Dentro de las problemáticas ambientales globales que se evalúan en la actualidad, ¿qué consecuencia directa genera el cambio climático en la geografía humana?",
+          options: [
+            "El aumento de desplazamientos forzados o 'migraciones climáticas' a causa de la pérdida progresiva de recursos y desastres naturales.",
+            "El enfriamiento acelerado de las zonas tropicales, lo que permite la expansión de la agricultura de hielo.",
+            "La desaparición absoluta de los océanos, lo que unificará todos los continentes en el futuro cercano.",
+            "El crecimiento desproporcionado de las ciudades subterráneas para evadir la radiación solar extrema.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Cuál fue el objetivo central del proceso de la Revolución de 1948 en la configuración de la Costa Rica contemporánea?",
+          options: [
+            "Transformar la estructura del Estado mediante una nueva Constitución Política, reformas sociales y la abolición del ejército.",
+            "Restaurar el sistema colonial de encomiendas y los tributos obligatorios a la corona española.",
+            "Establecer una dictadura militar permanente apoyada por potencias extracontinentales.",
+            "Unificar el territorio nacional con las repúblicas federales del istmo centroamericano.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "En el contexto de la economía global, ¿qué función principal cumplen las instituciones financieras internacionales como el Fondo Monetario Internacional (FMI)?",
+          options: [
+            "Supervisar la estabilidad del sistema financiero global y otorgar asistencia financiera condicionada a los países miembros en crisis.",
+            "Imponer salarios mínimos obligatorios a todos los trabajadores del sector informal en el mundo.",
+            "Prohibir el comercio exterior de productos agrícolas entre los países en vías de desarrollo.",
+            "Ejercer como el único banco comercial autorizado para emitir la moneda local de cada nación.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Cómo influyó la carrera armamentista durante el periodo de la Guerra Fría en la ciencia y la tecnología?",
+          options: [
+            "Impulsó de manera acelerada la investigación aeroespacial, el desarrollo de las telecomunicaciones y la tecnología digital.",
+            "Provocó el estancamiento absoluto de la ciencia moderna debido al cierre de todas las universidades públicas.",
+            "Obligó a las superpotencias a eliminar por completo el uso de computadoras en la industria militar.",
+            "Impidió que se realizaran avances médicos o descubrimientos en el área de la salud humana.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué desafío socioambiental principal enfrentan las grandes metrópolis urbanas en los países en vías de desarrollo?",
+          options: [
+            "La gestión deficiente de los residuos sólidos, la contaminación atmosférica y el déficit en el transporte público.",
+            "La escasez absoluta de habitantes debido a la despoblación total de las zonas metropolitanas.",
+            "La prohibición legal de construir edificaciones de más de dos pisos en los centros comerciales.",
+            "La ausencia total de actividades económicas y el predominio exclusivo de bosques primarios.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "Dentro del modelo de Estado Gestor en Costa Rica, ¿cuál fue la importancia de la creación de la Proveeduría Nacional y los bancos estatales?",
+          options: [
+            "Centralizar y dinamizar el crédito para sectores productivos y regular la actividad comercial interna del país.",
+            "Entregar el control absoluto de la economía nacional a la banca privada extranjera.",
+            "Eliminar los impuestos directos a los grandes terratenientes cafetaleros tradicionales.",
+            "Sustituir las funciones de la Asamblea Legislativa por decisiones bancarias directas.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué papel desempeñaron los movimientos de protesta estudiantil y obrera a nivel internacional durante la década de 1960?",
+          options: [
+            "Cuestionaron el orden establecido, las estructuras autoritarias, la guerra y promovieron demandas por los derechos civiles.",
+            "Apoyaron de forma unánime la expansión del imperialismo colonial en los continentes africanos.",
+            "Exigieron el restablecimiento de los sistemas monárquicos absolutos en Europa occidental.",
+            "Prohibieron la libertad de expresión y la manifestación pública en todas las naciones democráticas.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "Al analizar la dinámica demográfica actual, ¿qué indica una pirámide poblacional con una base angosta y una cúspide ancha?",
+          options: [
+            "Una población envejecida, con bajas tasas de natalidad y una alta esperanza de vida.",
+            "Una población altamente joven con un crecimiento vegetativo sumamente acelerado.",
+            "Un colapso demográfico total provocado por migraciones masivas de adultos mayores.",
+            "La igualdad numérica perfecta entre niños, jóvenes y adultos mayores en el país.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué implicó la crisis de los misiles en Cuba en 1962 para el escenario de la Guerra Fría?",
+          options: [
+            "El momento de mayor tensión geopolítica directa entre Estados Unidos y la Unión Soviética con riesgo de conflicto nuclear.",
+            "La firma de un tratado de paz definitivo que disolvió inmediatamente ambos bloques militares.",
+            "La anexión pacífica de la isla caribeña al territorio continental de los Estados Unidos.",
+            "El fin de la influencia soviética en todo el hemisferio occidental de manera permanente.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "En el marco de la apertura comercial y la globalización, ¿qué busca un país al firmar tratados de libre comercio (TLC)?",
+          options: [
+            "Ampliar el acceso a mercados internacionales de exportación y atraer flujos de inversión extranjera.",
+            "Cerrar las fronteras nacionales para proteger la producción local de cualquier competencia externa.",
+            "Sustituir sus leyes nacionales por los códigos mercantiles de un solo país socio.",
+            "Eliminar la necesidad de recaudar impuestos internos en el presupuesto de la república.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Cuál ha sido una de las consecuencias socioeconómicas de la diversificación de exportaciones en Costa Rica desde finales del siglo XX?",
+          options: [
+            "La reducción de la dependencia exclusiva del café y el banano, incorporando productos industriales y servicios médicos.",
+            "La transformación del país en un exportador neto de petróleo crudo y gas natural.",
+            "La eliminación total de la inversión extranjera directa en el sector tecnológico.",
+            "El regreso absoluto al modelo económico colonial de subsistencia agrícola familiar.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué postulado defiende el concepto de desarrollo sostenible en la actualidad?",
+          options: [
+            "Satisfacer las necesidades de las generaciones presentes sin comprometer la capacidad de las futuras generaciones para atender las suyas.",
+            "Explotar de manera intensiva e irrestricta todos los recursos naturales no renovables en el menor tiempo posible.",
+            "Detener de forma absoluta cualquier tipo de actividad económica industrial para conservar los bosques intactos.",
+            "Priorizar el crecimiento económico financiero por encima de la conservación de los ecosistemas locales.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué características políticas distinguieron al proceso de transición democrática en América Latina durante las últimas décadas del siglo XX?",
+          options: [
+            "El reemplazo progresivo de regímenes militares autoritarios por gobiernos civiles elegidos mediante sufragio.",
+            "La instauración de monarquías parlamentarias hereditarias en la totalidad del cono sur.",
+            "La abolición de las constituciones políticas y el gobierno por medio de consejos populares armados.",
+            "La unificación de todas las repúblicas latinoamericanas bajo un mandato presidencial único.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "Dentro de los contenidos geográficos del programa, ¿qué estudia la geografía humana?",
+          options: [
+            "La relación entre las sociedades y el espacio geográfico, analizando la distribución de la población, la economía y la cultura.",
+            "La composición química exclusiva de las rocas ígneas y metamórficas de la corteza terrestre.",
+            "El movimiento de rotación y traslación de los planetas lejanos del sistema solar.",
+            "La estructura interna del núcleo de la Tierra y el origen de las capas tectónicas.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué efectos socioeconómicos provocó la crisis económica internacional de 2008 en el comercio global?",
+          options: [
+            "Una fuerte contracción financiera, caída en el consumo, desempleo y desaceleración de las economías exportadoras.",
+            "Un crecimiento económico sin precedentes y la erradicación de la pobreza mundial en pocos meses.",
+            "La adopción universal de una moneda digital única administrada por la Organización de las Naciones Unidas.",
+            "El cierre definitivo de todas las bolsas de valores y bancos comerciales del planeta.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "Al estudiar los derechos de la ciudadanía en una sociedad democrática, ¿qué implica la rendición de cuentas (accountability)?",
+          options: [
+            "La obligación de los gobernantes y funcionarios públicos de informar, justificar y responsabilizarse por el uso de los recursos y actos de gobierno.",
+            "El derecho de los ciudadanos a evadir el pago de impuestos municipales si el alcalde no les agrada.",
+            "La facultad del Poder Judicial para destituir presidentes sin la aprobación de la Asamblea Legislativa.",
+            "La prohibición absoluta de criticar las decisiones económicas tomadas por el poder ejecutivo.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Cuál fue el impacto del Plan Marshall implementado por Estados Unidos en Europa tras la Segunda Guerra Mundial?",
+          options: [
+            "Brindar asistencia financiera para la reconstrucción de la infraestructura europea y frenar la expansión del comunismo.",
+            "Imponer un régimen militar de ocupación permanente en todos los países del continente africano.",
+            "Financiar la industrialización pesada de la Unión Soviética y sus aliados orientales.",
+            "Establecer un arancel global único para prohibir el comercio entre Europa y América.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué rol cumplen los organismos no gubernamentales (ONG) en el escenario político y social contemporáneo?",
+          options: [
+            "Incidir en la defensa de los derechos humanos, la protección ambiental, la asistencia social y la fiscalización ciudadana.",
+            "Ejercer como partidos políticos tradicionales en las elecciones presidenciales de cada país.",
+            "Sustituir a los ministerios de seguridad pública en el control militar de las fronteras nacionales.",
+            "Cobrar impuestos directos a las corporaciones transnacionales en nombre de los gobiernos locales.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Qué significó el proceso de industrialización liviana en Costa Rica durante la vigencia del modelo ISI?",
+          options: [
+            "La producción interna de bienes de consumo no duraderos (como alimentos procesados, textiles y calzado) que antes se importaban.",
+            "La fabricación masiva de maquinaria pesada, barcos transatlánticos y motores de aviación comercial.",
+            "La sustitución total de las fábricas urbanas por talleres artesanales familiares rurales.",
+            "La prohibición legal de utilizar energía eléctrica en cualquier proceso de manufactura comercial.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "En el análisis de las migraciones internacionales, ¿cómo se definen las llamadas 'remesas'?",
+          options: [
+            "Los recursos económicos que los migrantes envían a sus países de origen para el sustento de sus familias y comunidades.",
+            "Los impuestos obligatorios que los gobiernos cobran a los extranjeros por cruzar las aduanas.",
+            "Los subsidios que otorgan los organismos internacionales a las personas que deciden no migrar.",
+            "Las deudas financieras contraídas por los gobiernos al financiar pasajes aéreos masivos.",
+          ],
+          answer: 0,
+        },
+        {
+          question:
+            "¿Por qué se destaca la importancia de la educación cívica y social dentro del currículo de Bachillerato por Madurez?",
+          options: [
+            "Para promover valores democráticos, el respeto a la diversidad, la tolerancia y el ejercicio responsable de los deberes ciudadanos.",
+            "Para obligar a los estudiantes a memorizar códigos penales sin comprender su aplicación práctica.",
+            "Para suprimir el debate político en las instituciones educativas del país.",
+            "Para sustituir el estudio de la historia universal por doctrinas ideológicas partidarias.",
+          ],
+          answer: 0,
+        },
+      ];
+
+      let currentQuestions = [];
+      let currentIndex = 0;
+      let score = 0;
+      let answered = false;
+
+      const startScreen = document.getElementById("start-screen");
+      const quizScreen = document.getElementById("quiz-screen");
+      const resultScreen = document.getElementById("result-screen");
+      const startBtn = document.getElementById("start-btn");
+      const nextBtn = document.getElementById("next-btn");
+      const restartBtn = document.getElementById("restart-btn");
+      const questionText = document.getElementById("question-text");
+      const optionsContainer = document.getElementById("options-container");
+      const feedbackContainer = document.getElementById("feedback-container");
+      const questionCounter = document.getElementById("question-counter");
+      const scoreCounter = document.getElementById("score-counter");
+      const finalScore = document.getElementById("final-score");
+
+      startBtn.addEventListener("click", startQuiz);
+      nextBtn.addEventListener("click", nextQuestion);
+      restartBtn.addEventListener("click", startQuiz);
+
+      function startQuiz() {
+        startScreen.classList.add("d-none");
+        resultScreen.classList.add("d-none");
+        quizScreen.classList.remove("d-none");
+
+        // Randomize and select exactly 40 questions
+        currentQuestions = [...questionBank]
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 40);
+        currentIndex = 0;
+        score = 0;
+        updateScoreDisplay();
+        loadQuestion();
+      }
+
+      function loadQuestion() {
+        answered = false;
+        feedbackContainer.innerHTML = "";
+        nextBtn.classList.add("d-none");
+
+        const q = currentQuestions[currentIndex];
+        questionCounter.innerText = `Pregunta ${currentIndex + 1} de ${currentQuestions.length}`;
+        questionText.innerText = q.question;
+
+        optionsContainer.innerHTML = "";
+        q.options.forEach((opt, index) => {
+          const btn = document.createElement("button");
+          btn.className = "btn btn-outline-primary option-btn";
+          btn.innerText = opt;
+          btn.addEventListener("click", () => selectOption(index, q.answer));
+          optionsContainer.appendChild(btn);
+        });
+      }
+
+      function selectOption(selectedIndex, correctIndex) {
+        if (answered) return;
+        answered = true;
+
+        const buttons = optionsContainer.children;
+
+        if (selectedIndex === correctIndex) {
+          buttons[selectedIndex].classList.remove("btn-outline-primary");
+          buttons[selectedIndex].classList.add("btn-success");
+          feedbackContainer.innerHTML =
+            '<div class="alert alert-success py-2">¡Correcto!</div>';
+          score += 1;
+          updateScoreDisplay();
+        } else {
+          buttons[selectedIndex].classList.remove("btn-outline-primary");
+          buttons[selectedIndex].classList.add("btn-danger");
+          buttons[correctIndex].classList.remove("btn-outline-primary");
+          buttons[correctIndex].classList.add("btn-success");
+          feedbackContainer.innerHTML =
+            '<div class="alert alert-danger py-2">Incorrecto. La respuesta correcta era la opción resaltada en verde.</div>';
+        }
+
+        for (let btn of buttons) {
+          btn.disabled = true;
+        }
+
+        if (currentIndex < currentQuestions.length - 1) {
+          nextBtn.classList.remove("d-none");
+        } else {
+          nextBtn.classList.add("d-none");
+          setTimeout(showResults, 1500);
+        }
+      }
+
+      function nextQuestion() {
+        currentIndex++;
+        loadQuestion();
+      }
+
+      function updateScoreDisplay() {
+        scoreCounter.innerText = `Puntos: ${score}`;
+      }
+
+      function showResults() {
+        quizScreen.classList.add("d-none");
+        resultScreen.classList.remove("d-none");
+        finalScore.innerText = `${score} / ${currentQuestions.length}`;
+      }
+    </script>
+  </body>
+</html>
